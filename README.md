@@ -42,11 +42,17 @@ cd git-acm
 chmod +x git-acm install.sh uninstall.sh
 ```
 
+If you are skeptical about `chmod` in the command, copy-paste the code into any AI and ask whether it is harmful or not.
+
 3. Run installer:
 
 ```bash
 ./install.sh
 ```
+
+### Demo (Install + Working)
+
+![Demo of installing and using git-acm](assets/demo-install-working.jpeg)
 
 The installer copies `git-acm` to `~/.local/bin/` (or `/usr/local/bin/`) and marks it executable.
 
