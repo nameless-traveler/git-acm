@@ -127,8 +127,6 @@ else
 fi
 ```
 
-4. (Optional but recommended) add the new option to `show_help()` so users can discover it.
-
 5. Reinstall to apply changes globally:
 
 ```bash
