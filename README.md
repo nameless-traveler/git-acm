@@ -89,6 +89,60 @@ git acm "feat: add login page" -p
 git acm "initial commit" -p orm
 ```
 
+## Add Your Own Custom Commands
+
+`git-acm` is just a Bash script, so you can add your own flags/behavior by editing the `git-acm` file.
+
+1. Open `git-acm` and add a new flag variable near:
+
+```bash
+PUSH=false
+ORM=false
+```
+
+For example:
+
+```bash
+PUSH=false
+ORM=false
+NO_VERIFY=false
+```
+
+2. In the `while [[ $# -gt 0 ]]; do ... case "$1" in` block, add your flag:
+
+```bash
+    -nv|--no-verify)
+      NO_VERIFY=true
+      shift
+      ;;
+```
+
+3. Update the commit step to use that flag:
+
+```bash
+if $NO_VERIFY; then
+  git commit -m "$MESSAGE" --no-verify
+else
+  git commit -m "$MESSAGE"
+fi
+```
+
+4. (Optional but recommended) add the new option to `show_help()` so users can discover it.
+
+5. Reinstall to apply changes globally:
+
+```bash
+./install.sh
+```
+
+Then use:
+
+```bash
+git acm "your message" -nv
+```
+
+Tip: keep custom flag names short and unique to avoid confusion with standard Git flags.
+
 ## Uninstall
 
 ```bash
